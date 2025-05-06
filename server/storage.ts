@@ -1,13 +1,68 @@
-import { 
-  type Property, 
-  type InsertProperty, 
-  type ContactSubmission, 
-  type InsertContactSubmission,
-  type Testimonial,
-  type InsertTestimonial,
+import {
+  type User,
+  type InsertUser,
+  type ContactRequest as ContactSubmission,
+  type InsertContactRequest as InsertContactSubmission,
+  type PropertyInquiry,
+  type InsertPropertyInquiry,
   type ValuationRequest,
   type InsertValuationRequest
 } from "@shared/schema";
+
+// Custom types for in-memory storage
+export interface Property {
+  id: number;
+  title: string;
+  address: string;
+  city: string;
+  state: string;
+  zipCode: string;
+  price: number;
+  bedrooms: number;
+  bathrooms: number;
+  squareFeet: number;
+  description: string;
+  features: string[];
+  propertyType: string;
+  isFeatured: boolean;
+  status: string;
+  imageUrls: string[];
+}
+
+export interface InsertProperty {
+  title: string;
+  address: string;
+  city: string;
+  state: string;
+  zipCode: string;
+  price: number;
+  bedrooms: number;
+  bathrooms: number;
+  squareFeet: number;
+  description: string;
+  features: string[];
+  propertyType: string;
+  isFeatured: boolean;
+  status: string;
+  imageUrls: string[];
+}
+
+export interface Testimonial {
+  id: number;
+  name: string;
+  location: string;
+  testimonial: string;
+  rating: number;
+  date: string;
+}
+
+export interface InsertTestimonial {
+  name: string;
+  location: string;
+  testimonial: string;
+  rating: number;
+  date: string;
+}
 
 export interface IStorage {
   // Property methods
@@ -23,23 +78,32 @@ export interface IStorage {
   // Testimonial methods
   getTestimonials(): Promise<Testimonial[]>;
   createTestimonial(testimonial: InsertTestimonial): Promise<Testimonial>;
+  
+  // Valuation request methods
+  createValuationRequest(request: InsertValuationRequest): Promise<ValuationRequest>;
+  getValuationRequests(): Promise<ValuationRequest[]>;
+  getValuationRequestByEmail(email: string): Promise<ValuationRequest | undefined>;
 }
 
 export class MemStorage implements IStorage {
   private properties: Map<number, Property>;
   private contactSubmissions: Map<number, ContactSubmission>;
   private testimonials: Map<number, Testimonial>;
+  private valuationRequests: Map<number, ValuationRequest>;
   private propertyId: number;
   private contactSubmissionId: number;
   private testimonialId: number;
+  private valuationRequestId: number;
 
   constructor() {
     this.properties = new Map();
     this.contactSubmissions = new Map();
     this.testimonials = new Map();
+    this.valuationRequests = new Map();
     this.propertyId = 1;
     this.contactSubmissionId = 1;
     this.testimonialId = 1;
+    this.valuationRequestId = 1;
 
     // Initialize with sample data
     this.initializeData();
@@ -161,7 +225,20 @@ export class MemStorage implements IStorage {
   async createContactSubmission(submission: InsertContactSubmission): Promise<ContactSubmission> {
     const id = this.contactSubmissionId++;
     const createdAt = new Date();
-    const newSubmission = { ...submission, id, createdAt };
+    
+    // Ensure all fields have proper types (converting undefined to null)
+    const newSubmission: ContactSubmission = {
+      id,
+      firstName: submission.firstName,
+      lastName: submission.lastName,
+      email: submission.email,
+      phone: submission.phone,
+      interest: submission.interest || null,
+      message: submission.message || null,
+      consent: submission.consent,
+      createdAt
+    };
+    
     this.contactSubmissions.set(id, newSubmission);
     return newSubmission;
   }
@@ -180,6 +257,41 @@ export class MemStorage implements IStorage {
     const newTestimonial = { ...testimonial, id };
     this.testimonials.set(id, newTestimonial);
     return newTestimonial;
+  }
+  
+  // Valuation request methods
+  async createValuationRequest(request: InsertValuationRequest): Promise<ValuationRequest> {
+    const id = this.valuationRequestId++;
+    const createdAt = new Date();
+    
+    // Ensure all fields have proper types (converting undefined to null)
+    const newRequest: ValuationRequest = {
+      id,
+      firstName: request.firstName,
+      lastName: request.lastName,
+      email: request.email,
+      phone: request.phone,
+      address: request.address,
+      city: request.city,
+      state: request.state,
+      zipCode: request.zipCode,
+      propertyType: request.propertyType || null,
+      estimatedValue: request.estimatedValue || null,
+      timeframe: request.timeframe || null,
+      createdAt
+    };
+    
+    this.valuationRequests.set(id, newRequest);
+    return newRequest;
+  }
+
+  async getValuationRequests(): Promise<ValuationRequest[]> {
+    return Array.from(this.valuationRequests.values());
+  }
+
+  async getValuationRequestByEmail(email: string): Promise<ValuationRequest | undefined> {
+    const requests = this.getValuationRequests();
+    return (await requests).find(request => request.email.toLowerCase() === email.toLowerCase());
   }
 }
 
