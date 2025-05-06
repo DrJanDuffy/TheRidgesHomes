@@ -2,6 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { contactSchema } from "@shared/schema";
+import followUpBossService from "./services/followUpBoss";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // API routes
@@ -12,16 +13,36 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Validate the contact form data
       const validatedData = contactSchema.parse(req.body);
       
-      // Store contact form data
-      const contactRequest = await storage.createContactRequest(validatedData);
+      // Store contact form data in our local storage
+      const contactRequest = await storage.createContactSubmission(validatedData);
       
-      // In a real implementation, you would send an email notification here
-      // and integrate with Follow Up Boss CRM for lead management
+      // Send the contact data to Follow Up Boss CRM
+      let followUpBossResponse = null;
+      let followUpBossError = null;
+      
+      try {
+        // Check if contact exists first
+        const existingContact = await followUpBossService.checkExistingContact(validatedData.email);
+        
+        // If not found or empty results, create new contact
+        if (!existingContact || existingContact.people.length === 0) {
+          followUpBossResponse = await followUpBossService.createContact(validatedData);
+          console.log('Contact created in Follow Up Boss:', followUpBossResponse);
+        } else {
+          console.log('Contact already exists in Follow Up Boss');
+        }
+      } catch (crmError) {
+        console.error('Error with Follow Up Boss CRM:', crmError);
+        followUpBossError = crmError instanceof Error ? crmError.message : 'Unknown CRM error';
+        // We don't want to fail the whole request if CRM integration fails
+      }
       
       res.status(200).json({ 
         success: true, 
         message: 'Contact request received successfully',
-        id: contactRequest.id
+        id: contactRequest.id,
+        crmStatus: followUpBossError ? 'error' : 'success',
+        crmMessage: followUpBossError || 'Contact data sent to CRM'
       });
     } catch (error) {
       console.error('Error processing contact request:', error);
