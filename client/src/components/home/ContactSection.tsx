@@ -54,10 +54,16 @@ const ContactSection = () => {
       });
       
       if (response.ok) {
+        const result = await response.json();
+        
         toast({
           title: "Message Sent Successfully",
           description: "Thank you for contacting Dr. Jan Duffy. She will respond to your inquiry shortly.",
         });
+        
+        // Log CRM status for debugging
+        console.log('CRM Integration Status:', result.crmStatus);
+        
         form.reset();
       } else {
         toast({

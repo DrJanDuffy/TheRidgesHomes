@@ -1,5 +1,17 @@
 import axios from 'axios';
-import { ContactFormData } from '@/lib/types';
+import { InsertContactRequest } from '@shared/schema';
+
+// Define a flexible type that can work with both client forms and server schemas
+interface GenericContactData {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  interest?: string;
+  message?: string;
+  consent?: boolean;
+  consentGiven?: boolean;
+}
 
 const FOLLOW_UP_BOSS_API_URL = 'https://api.followupboss.com/v1';
 const API_KEY = process.env.FOLLOW_UP_BOSS_API_KEY;
@@ -17,15 +29,15 @@ interface FollowUpBossPersonData {
 
 /**
  * Create a new person in Follow Up Boss CRM
- * @param formData Contact form data from the website
+ * @param formData Contact form data from the website (can be from client or server schema)
  * @returns Promise with the response from Follow Up Boss
  */
-export async function createContact(formData: ContactFormData) {
+export async function createContact(formData: GenericContactData) {
   try {
     if (!API_KEY) {
       throw new Error('Follow Up Boss API Key is not set');
     }
-
+    
     // Transform the form data into the format expected by Follow Up Boss
     const personData: FollowUpBossPersonData = {
       firstName: formData.firstName,
@@ -33,7 +45,7 @@ export async function createContact(formData: ContactFormData) {
       emails: [{ value: formData.email, type: 'primary' }],
       phones: [{ value: formData.phone, type: 'mobile' }],
       source: 'Website Contact Form',
-      tags: [formData.interest], // Use interest as a tag for segmentation
+      tags: [formData.interest as string], // Use interest as a tag for segmentation
       notes: formData.message || `Interest: ${formData.interest}`
     };
 
