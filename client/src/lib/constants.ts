@@ -29,7 +29,19 @@ export const NAV_LINKS = [
   { name: "About", path: "/about" },
   { name: "Community", path: "/community" },
   { name: "Listings", path: "/listings" },
-  { name: "Resources", path: "/resources" },
+  { 
+    name: "Resources", 
+    path: "/resources",
+    dropdown: [
+      { name: "Buyer's Guide", path: "/resources?tab=buyer" },
+      { name: "Seller's Guide", path: "/resources?tab=seller" },
+      { name: "Mortgage Calculator", path: "/resources?tab=mortgage" },
+      { name: "Market Reports", path: "/resources?tab=market" },
+      { name: "Home Valuation", path: "/resources?tab=valuation" },
+      { name: "Relocation", path: "/resources?tab=relocation" },
+      { name: "Blog", path: "/resources?tab=blog" }
+    ]
+  },
   { name: "Contact", path: "/contact" },
   { name: "Professional Disclosure", path: "/disclosure" }
 ];

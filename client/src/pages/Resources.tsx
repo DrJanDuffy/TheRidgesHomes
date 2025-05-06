@@ -513,7 +513,9 @@ const Resources = () => {
       {/* Resources Content */}
       <section className="py-20 px-4 md:px-8 bg-neutral-50">
         <div className="container mx-auto">
-          <Tabs defaultValue="buyer" className="w-full">
+          <Tabs defaultValue={window.location.search.includes('tab=') 
+            ? window.location.search.split('tab=')[1].split('&')[0] 
+            : "buyer"} className="w-full">
             <TabsList className="grid grid-cols-2 md:grid-cols-7 mb-12 w-full">
               <TabsTrigger value="buyer" className="text-center py-3 font-secondary font-medium">Buyer's Guide</TabsTrigger>
               <TabsTrigger value="seller" className="text-center py-3 font-secondary font-medium">Seller's Guide</TabsTrigger>
