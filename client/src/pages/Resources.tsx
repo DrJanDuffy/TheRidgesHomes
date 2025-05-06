@@ -513,13 +513,14 @@ const Resources = () => {
       <section className="py-20 px-4 md:px-8 bg-neutral-50">
         <div className="container mx-auto">
           <Tabs defaultValue="buyer" className="w-full">
-            <TabsList className="grid grid-cols-2 md:grid-cols-6 mb-12 w-full">
+            <TabsList className="grid grid-cols-2 md:grid-cols-7 mb-12 w-full">
               <TabsTrigger value="buyer" className="text-center py-3 font-secondary font-medium">Buyer's Guide</TabsTrigger>
               <TabsTrigger value="seller" className="text-center py-3 font-secondary font-medium">Seller's Guide</TabsTrigger>
               <TabsTrigger value="mortgage" className="text-center py-3 font-secondary font-medium">Mortgage Calculator</TabsTrigger>
               <TabsTrigger value="market" className="text-center py-3 font-secondary font-medium">Market Reports</TabsTrigger>
               <TabsTrigger value="valuation" id="valuation" className="text-center py-3 font-secondary font-medium">Home Valuation</TabsTrigger>
               <TabsTrigger value="relocation" className="text-center py-3 font-secondary font-medium">Relocation</TabsTrigger>
+              <TabsTrigger value="blog" className="text-center py-3 font-secondary font-medium">Blog</TabsTrigger>
             </TabsList>
             
             <TabsContent value="buyer" className="mt-6">
@@ -721,19 +722,20 @@ const Resources = () => {
             <TabsContent value="relocation" className="mt-6">
               <RelocationInfo />
             </TabsContent>
-          </Tabs>
-          
-          {/* Blog Section */}
-          <div id="blog" className="mt-20">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-display font-bold text-primary mb-4">Luxury Real Estate Blog</h2>
-              <p className="text-lg text-neutral-600 max-w-3xl mx-auto">
-                Stay informed with the latest insights, trends, and news about luxury real estate in The Ridges Summerlin.
-              </p>
-            </div>
             
-            <BlogPreview />
-          </div>
+            <TabsContent value="blog" className="mt-6">
+              <div>
+                <div className="text-center mb-12">
+                  <h2 className="text-3xl md:text-4xl font-display font-bold text-primary mb-4">Luxury Real Estate Blog</h2>
+                  <p className="text-lg text-neutral-600 max-w-3xl mx-auto">
+                    Stay informed with the latest insights, trends, and news about luxury real estate in The Ridges Summerlin.
+                  </p>
+                </div>
+                
+                <BlogPreview />
+              </div>
+            </TabsContent>
+          </Tabs>
         </div>
       </section>
 
