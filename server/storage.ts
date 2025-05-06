@@ -152,7 +152,7 @@ export class MemStorage implements IStorage {
         propertyType: "Single Family",
         isFeatured: true,
         status: "For Sale",
-        imageUrls: ["https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500&q=80"]
+        imageUrls: ["https://static01.nyt.com/images/2020/03/08/realestate/08veges1/08veges1-superJumbo.jpg"]
       },
       {
         title: "Modern Desert Retreat",
@@ -169,7 +169,7 @@ export class MemStorage implements IStorage {
         propertyType: "Custom Home",
         isFeatured: true,
         status: "For Sale",
-        imageUrls: ["https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500&q=80"]
+        imageUrls: ["https://theredhillgroup.files.wordpress.com/2011/05/ridges-golf.jpg"]
       },
       {
         title: "Spectacular Custom Estate",
@@ -186,7 +186,7 @@ export class MemStorage implements IStorage {
         propertyType: "Estate",
         isFeatured: true,
         status: "For Sale",
-        imageUrls: ["https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500&q=80"]
+        imageUrls: ["https://static01.nyt.com/images/2020/03/08/realestate/08veges2/08veges2-superJumbo.jpg"]
       }
     ];
 
