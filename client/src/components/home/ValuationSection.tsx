@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { HOMEBOT_ACCOUNT_ID } from '@/lib/constants';
 
 declare global {
@@ -8,10 +8,33 @@ declare global {
 }
 
 const ValuationSection = () => {
+  const [homebotLoaded, setHomebotLoaded] = useState(false);
+
   // Initialize Homebot widget when component mounts
   useEffect(() => {
+    // Create a function to initialize Homebot
+    const initHomebot = () => {
+      if (window.Homebot) {
+        console.log('Initializing Homebot with account ID:', HOMEBOT_ACCOUNT_ID);
+        window.Homebot('#homebot_homeowner', HOMEBOT_ACCOUNT_ID);
+        setHomebotLoaded(true);
+      }
+    };
+
+    // Check if Homebot is already loaded
     if (window.Homebot) {
-      window.Homebot('#homebot_homeowner', HOMEBOT_ACCOUNT_ID);
+      initHomebot();
+    } else {
+      // Set up an interval to check for Homebot availability (script may load after component mounts)
+      const checkInterval = setInterval(() => {
+        if (window.Homebot) {
+          initHomebot();
+          clearInterval(checkInterval);
+        }
+      }, 500);
+
+      // Clear interval on component unmount
+      return () => clearInterval(checkInterval);
     }
   }, []);
 
@@ -80,7 +103,14 @@ const ValuationSection = () => {
           </div>
           
           <div className="lg:col-span-3 bg-neutral-100 rounded-lg p-8 shadow-lg">
-            <div id="homebot_homeowner"></div>
+            <div id="homebot_homeowner">
+              {!homebotLoaded && (
+                <div className="flex flex-col items-center justify-center p-8">
+                  <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary mb-4"></div>
+                  <p className="text-neutral-600">Loading valuation tool...</p>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>

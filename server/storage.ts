@@ -4,7 +4,9 @@ import {
   type ContactSubmission, 
   type InsertContactSubmission,
   type Testimonial,
-  type InsertTestimonial
+  type InsertTestimonial,
+  type ValuationRequest,
+  type InsertValuationRequest
 } from "@shared/schema";
 
 export interface IStorage {
