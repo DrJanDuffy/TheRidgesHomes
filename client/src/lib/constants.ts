@@ -30,7 +30,8 @@ export const NAV_LINKS = [
   { name: "Community", path: "/community" },
   { name: "Listings", path: "/listings" },
   { name: "Resources", path: "/resources" },
-  { name: "Contact", path: "/contact" }
+  { name: "Contact", path: "/contact" },
+  { name: "Professional Disclosure", path: "/disclosure" }
 ];
 
 export const FEATURED_PROPERTIES = [

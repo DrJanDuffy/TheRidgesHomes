@@ -1,0 +1,105 @@
+Website Implementation Instructions
+Dr. Jan Duffy's REALTOR® Disclosure Statement
+Berkshire Hathaway HomeServices Compliant
+Please implement Dr. Jan Duffy's required professional disclosure statement on her real estate website following these guidelines to ensure compliance with both Nevada real estate regulations and Berkshire Hathaway HomeServices branding requirements.
+Berkshire Hathaway HomeServices Brand Requirements
+
+Brand Identity:
+
+Use the official Berkshire Hathaway HomeServices color palette (navy blue #00008B and coral #FF7D59)
+Include the Berkshire Hathaway HomeServices logo according to brand guidelines
+Use approved fonts (typically Lato or Open Sans for web content)
+
+
+Required Legal Text:
+
+Include the following legal statement at the bottom of the disclosure page:
+Berkshire Hathaway HomeServices and the Berkshire Hathaway HomeServices symbol are registered service marks of Columbia Insurance Company, a Berkshire Hathaway affiliate. Equal Housing Opportunity.
+
+Include the Equal Housing Opportunity logo near this text
+
+
+Franchisee Identification:
+
+Clearly identify that Dr. Duffy is an independently licensed agent affiliated with Berkshire Hathaway HomeServices Nevada Properties
+
+
+ForeverSM Agent Reference:
+
+When appropriate, use the term "Forever Agent℠" with the proper service mark symbol
+
+
+
+Placement Requirements
+
+Primary Location: Create a dedicated page titled "Professional Disclosure" that is accessible from the main navigation menu. This ensures the disclosure is easily discoverable by site visitors.
+Secondary Locations: Add a link to the disclosure statement in these additional locations:
+
+Footer section of every page (labeled "Professional Disclosure")
+"About Me" or "About Dr. Duffy" page
+"Contact" page
+Any client onboarding or registration forms
+
+
+Properties/Listings Section: Include a shortened reference link near property listings with text: "View Professional Disclosure Statement" that links to the main disclosure page.
+
+Technical Implementation
+
+Format: Maintain the markdown formatting of the disclosure statement, including all headings, bullet points, and emphasized text. Convert to proper HTML with appropriate heading tags (h1, h2, h3) and structural elements.
+Styling:
+
+Use Berkshire Hathaway HomeServices approved fonts
+Use the official brand color palette for headers, links, and other design elements
+Ensure adequate spacing between sections for readability
+Maintain a suitable contrast ratio between text and background for accessibility
+
+
+Responsive Design:
+
+Ensure the disclosure statement is fully readable on all devices (desktop, tablet, mobile)
+Adjust heading sizes and spacing appropriately for smaller screens
+Follow Berkshire Hathaway HomeServices responsive design guidelines
+
+
+PDF Version:
+
+Create a downloadable PDF version of the disclosure that includes proper Berkshire Hathaway HomeServices branding
+Add a "Download PDF" button at the top and bottom of the disclosure page
+Ensure the PDF includes all required legal statements and logos
+
+
+
+Legal Compliance Elements
+
+Date Stamp: Include the "Last Updated: May 2025" text at the bottom of the disclosure page.
+Copyright Notice: Ensure the copyright text appears exactly as provided:
+Copyright © 2025 · Dr. Jan Duffy REALTOR® · 9406 Del Webb Boulevard, Las Vegas, NV 89134
+REALTOR® is a registered trademark of the National Association of REALTORS®
+No Modifications: Do not alter any text content of the disclosure statement, as it contains legally required language per Nevada real estate regulations.
+MLS Compliance: Include the following statement if property listings are displayed on the website:
+Real estate listings held by brokerage firms other than Berkshire Hathaway HomeServices Nevada Properties are marked with the MLS™ logo and detailed information about them includes the name of the listing brokers.
+
+Privacy Policy Link: Include a link to the Berkshire Hathaway HomeServices Privacy Policy (www.bhhs.com/privacy-policy) near the disclosure statement.
+
+Additional Specifications
+
+Prominence: The disclosure should not be hidden behind multiple clicks or in an obscure location.
+Tracking: Implement basic analytics to track visitor interactions with the disclosure page for compliance documentation purposes.
+Print Styling: Add print-specific CSS to ensure the disclosure prints properly if a visitor chooses to print the page.
+Consistency: Ensure the disclosure page maintains visual consistency with other Berkshire Hathaway HomeServices branded pages.
+
+Required Content
+Please use the exact text of the disclosure statement as provided in the attachment, with the addition of the required Berkshire Hathaway HomeServices legal statements. The full disclosure includes sections on:
+
+Professional Licensing Information
+Professional Duties & Responsibilities
+Agency Relationships
+Nevada Disclosure Requirements
+Consumer Protection
+
+Final Approval Process
+Before publishing the disclosure page:
+
+Submit the design to Dr. Duffy's branch manager for compliance review
+Ensure all Berkshire Hathaway HomeServices branding guidelines have been followed
+Verify that all Nevada real estate regulatory requirements are met

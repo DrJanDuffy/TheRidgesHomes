@@ -12,6 +12,7 @@ import Community from "@/pages/Community";
 import Listings from "@/pages/Listings";
 import Contact from "@/pages/Contact";
 import Resources from "@/pages/Resources";
+import Disclosure from "@/pages/Disclosure";
 
 function Router() {
   return (
@@ -22,6 +23,7 @@ function Router() {
       <Route path="/listings" component={Listings} />
       <Route path="/resources" component={Resources} />
       <Route path="/contact" component={Contact} />
+      <Route path="/disclosure" component={Disclosure} />
       <Route component={NotFound} />
     </Switch>
   );
