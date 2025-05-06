@@ -65,6 +65,11 @@ app.use((req, res, next) => {
     host: "0.0.0.0",
     reusePort: true,
   }, () => {
+    const address = server.address();
     log(`serving on port ${port}`);
+    if (address && typeof address !== 'string') {
+      log(`server available at http://${address.address}:${address.port}`);
+    }
+    log(`environment: ${app.get("env")}`);
   });
 })();
