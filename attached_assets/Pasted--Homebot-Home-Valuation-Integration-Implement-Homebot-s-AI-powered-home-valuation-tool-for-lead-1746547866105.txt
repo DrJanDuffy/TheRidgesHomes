@@ -1,0 +1,245 @@
+## Homebot Home Valuation Integration
+- Implement Homebot's AI-powered home valuation tool for lead generation
+- Website implementation requires:
+  ```html
+  <div id="homebot_homeowner"></div>
+  <script>
+    (function (h,b) {
+      var w = window, d = document, s = 'script', x, y;
+      w['__hb_namespace'] = h;
+      w[h] = w[h] || function () {
+        (w[h].q=w[h].q||[]).push(arguments)
+      };
+      y = d.createElement(s);
+      x = d.getElementsByTagName(s)[0];
+      y.async = 1;
+      y.src = b;
+      x.parentNode.insertBefore(y,x)
+    })('Homebot','https://embed.homebotapp.com/lgw/v1/widget.js');
+    Homebot('#homebot_homeowner', '35de8cf0a487cf0fec06278f2023805ea02eba0b58960a43')
+  </script>
+  ```
+- Mobile app deep link integration:
+  ```html
+  <a href="https://homebot.page.link/?apn=com.homebot.app.android&isi=6448762620&ibi=com.homebot.app.ios&link=https%3A%2F%2Fhomebotapp.com%2F%3Fshare_code%3Ddr_jan5835">
+    Get Your Home Valuation on Mobile
+  </a>
+  ```
+- Features to highlight:
+  - Monthly valuation reports sent directly to leads
+  - Real-time wealth-building insights for homeowners
+  - Integration with Follow Up Boss for seamless lead management
+  - Property valuation using advanced AI algorithms
+  - Customizable reporting on equity and investment potential
+  - Luxury market analytics specific to The Ridges Summerlin
+  - Mobile app access for on-the-go property insights
+  - Personalized data sharing via Dr. Jan Duffy's custom link## RealScout IDX Integration
+- The website will utilize RealScout's office-listings web component for property listings display
+- Implementation requires:
+  ```html
+  <!-- Head section -->
+  <script src="https://em.realscout.com/widgets/realscout-web-components.umd.js" type="module"></script>
+  <style>
+    realscout-office-listings {
+      --rs-listing-divider-color: rgb(101, 141, 172);
+      width: 100%;
+    }
+  </style>
+
+  <!-- Body section -->
+  <realscout-office-listings 
+    agent-encoded-id="QWdlbnQtMjI1MDUw" 
+    sort-order="STATUS_AND_SIGNIFICANT_CHANGE" 
+    listing-status="For Sale" 
+    property-types="SFR,MF,TC,LAL,MOBILE" 
+    price-min="500000">
+  </realscout-office-listings>
+  ```
+- Required customizations:
+  - Update color scheme to match website design
+  - Configure property types specific to The Ridges Summerlin
+  - Set appropriate minimum price points for luxury listings
+  - Implement proper MLS disclaimers for compliance
+  - Connect with Follow Up Boss CRM for lead tracking and management# Replit Prompt: Create a Luxury Real Estate Website for The Ridges Summerlin Homes
+
+## Project Overview
+Create a sophisticated, high-end real estate website for Dr. Jan Duffy, a REALTOR® specializing in The Ridges Summerlin, an exclusive luxury community in Las Vegas. The website should showcase the elegance of this prestigious neighborhood while providing valuable resources for potential buyers and sellers.
+
+## Website Domain
+http://theridgessummerlinhomes.com/
+
+## Target Audience
+- Affluent homebuyers looking for luxury properties
+- Current homeowners in The Ridges considering selling
+- Investors interested in high-end real estate
+- Relocating executives and professionals
+
+## Key Features to Include
+
+### 1. Homepage
+- Hero section with stunning panoramic images of The Ridges community and luxury homes
+- Brief introduction to Dr. Jan Duffy highlighting her expertise in The Ridges
+- Featured listings carousel showing 3-4 premium properties
+- Quick search functionality for properties by price range, bedrooms, etc.
+- Community highlights section showcasing The Ridges' amenities
+- Call-to-action buttons for "Schedule a Consultation" and "View Listings"
+
+### 2. About Dr. Jan Duffy
+- Professional biography emphasizing her credentials and experience in luxury real estate
+- Testimonials from satisfied clients
+- Professional headshot and contact information
+- Certifications and affiliations (e.g., Luxury Home Marketing Specialist)
+- Philosophy/approach to serving clients
+
+### 3. The Ridges Community Page
+- Overview of The Ridges Summerlin with high-quality photography
+- Map of the different neighborhoods within The Ridges
+- Community amenities (Bear's Best Golf Course, parks, clubhouses)
+- School information for the area
+- Nearby entertainment, dining, and shopping options
+- Security features and HOA information
+- Market statistics specific to The Ridges (average home prices, days on market, etc.)
+
+### 4. Property Listings
+- Advanced search functionality with filters for price, bedrooms, amenities, etc.
+- High-resolution property images with virtual tours option
+- Detailed property descriptions highlighting luxury features
+- Floor plans and property dimensions
+- Property history and neighborhood information
+- Contact form to request more information about specific properties
+- Option to schedule showings online
+
+### 5. Seller Resources
+- Market analysis for The Ridges
+- Home valuation tool or offer to provide complimentary valuation
+- Selling process explanation
+- Home staging tips for luxury properties
+- Marketing strategy Dr. Duffy uses for selling luxury homes
+- Downloadable seller's guide (in exchange for contact information)
+
+### 6. Buyer Resources
+- Mortgage calculator
+- Guide to The Ridges neighborhoods
+- Relocation information for Las Vegas
+- Buyer's guide to luxury properties
+- Timeline of the buying process
+- FAQ for first-time luxury home buyers
+- Information about property taxes and insurance
+
+### 7. Blog/Content Section
+- Market updates specific to The Ridges and Summerlin
+- Luxury home design trends
+- Investment potential of The Ridges properties
+- Community events and news
+- New development announcements
+
+### 8. Contact Page
+- Multiple contact options (phone, email, form)
+- Office location with map
+- Scheduling tool for consultations
+- Response time guarantee
+- Social media links
+
+## Design Elements
+
+### Visual Style
+- Sophisticated, minimalist design with ample white space
+- Color palette: neutral colors (blacks, whites, grays) with gold or dark blue accents
+- Large, high-quality images of properties and the community
+- Custom icons for amenities and features
+- Elegant typography with serif fonts for headings and sans-serif for body text
+
+### User Experience
+- Mobile-responsive design
+- Fast loading times despite high-resolution images
+- Intuitive navigation with clear calls-to-action
+- Sticky header with contact information always visible
+- Breadcrumb navigation for deeper pages
+- Smooth transitions and subtle animations
+- Live chat option or chatbot for immediate assistance
+
+### Technical Requirements
+- Property database integration capability with MLS systems
+- Follow Up Boss CRM integration for comprehensive lead management
+  - Lead source tracking (200+ integrations supported)
+  - Automated follow-up sequences
+  - Two-way texting functionality
+  - Mobile app access for on-the-go lead management
+  - Team collaboration features and lead assignment
+  - Detailed reporting on lead sources and conversion rates
+- SEO optimization for local real estate searches
+- Google Analytics 4 and Tag Manager setup
+- SSL certificate for security
+- GDPR and CCPA compliant forms and data collection
+- Schema markup for real estate listings
+- Website visitor tracking with behavior analytics
+
+## Content Needs
+- Professional copywriting emphasizing luxury, exclusivity, and expertise
+- High-resolution photography of The Ridges community and properties
+- Drone footage for aerial views of the neighborhood
+- Virtual tour capabilities for featured properties
+- Testimonial videos from past clients
+- Market reports and infographics
+
+## Technologies to Consider for 2025
+
+### Frontend Development
+- React 19 or Next.js 14+ for dynamic, responsive interfaces with improved performance
+- Astro for static site generation with partial hydration (faster loading)
+- Tailwind CSS with AI-assisted design components
+- WebAssembly (Wasm) for high-performance features like 3D property tours
+- PWA (Progressive Web App) implementation for mobile-first approach
+
+### Interactive Experiences
+- AR/VR integration for immersive virtual property tours
+- 3D visualization tools for interactive floor plans
+- Dynamic maps with real-time neighborhood data using advanced APIs
+- AI-powered chatbots for instant property inquiries
+- Voice search optimization for hands-free navigation
+
+### Backend and Infrastructure
+- Headless CMS (Contentful, Strapi, or Sanity.io) for flexible content management
+- Serverless architecture (AWS Lambda, Vercel, or Netlify) for scalability
+- Blockchain integration for secure property transactions and records
+- AI-driven personalization engines for property recommendations
+- Edge computing for faster global performance
+
+### Data and Analytics
+- Big data analytics integration for market insights
+- Real-time property valuation tools
+- Predictive analytics for pricing trends
+- Machine learning for buyer behavior analysis
+- IoT integration for smart home feature showcase
+
+### Marketing and Conversion
+- Hyper-personalization features for targeted messaging
+- Follow Up Boss CRM integration for comprehensive lead management
+- Automated workflow systems for lead nurturing and follow-up
+- Video content management for property storytelling
+- Multi-platform social media integration
+- Two-way texting capabilities for instant client communication
+
+## SEO Focus Keywords
+- The Ridges Summerlin homes for sale
+- Luxury real estate Las Vegas
+- The Ridges Summerlin real estate agent
+- Dr. Jan Duffy realtor
+- Luxury homes Las Vegas
+- The Ridges Summerlin community
+- Custom homes The Ridges
+- Summerlin luxury real estate
+
+## Conversion Goals
+- Lead generation through property inquiries
+- Consultation scheduling
+- Home valuation requests
+- Newsletter sign-ups
+- Download of buyer's/seller's guides
+
+## Additional Notes
+- Emphasize exclusivity and insider knowledge of The Ridges community
+- Highlight Dr. Duffy's personal touch and concierge-level service
+- Create urgency by showcasing limited inventory in this exclusive community
+- Include testimonials from high-profile clients (with permission)
+- Ensure all content portrays the luxury lifestyle of The Ridges residents
