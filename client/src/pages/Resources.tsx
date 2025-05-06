@@ -476,6 +476,9 @@ const RelocationInfo = () => (
 
 // Main Resources Page Component
 const Resources = () => {
+  // State for active tab
+  const [activeTab, setActiveTab] = useState("buyer");
+  
   // Set page title and meta description
   useEffect(() => {
     document.title = "Resources | The Ridges Summerlin Luxury Real Estate";
@@ -485,7 +488,26 @@ const Resources = () => {
     if (metaDescription) {
       metaDescription.setAttribute("content", "Access exclusive resources for luxury real estate in The Ridges Summerlin including property valuation tools, market reports, mortgage calculators, and expert buying and selling guides.");
     }
+    
+    // Check if there's a tab parameter in the URL
+    const params = new URLSearchParams(window.location.search);
+    const tabParam = params.get('tab');
+    
+    // If there's a valid tab parameter, set it as the active tab
+    if (tabParam && ['buyer', 'seller', 'mortgage', 'market', 'valuation', 'relocation', 'blog'].includes(tabParam)) {
+      setActiveTab(tabParam);
+    }
   }, []);
+  
+  // Update URL when tab changes
+  useEffect(() => {
+    // Don't update URL on initial load
+    if (activeTab !== "buyer" || window.location.search.includes('tab=')) {
+      const url = new URL(window.location.href);
+      url.searchParams.set('tab', activeTab);
+      window.history.replaceState({}, '', url.toString());
+    }
+  }, [activeTab]);
 
   return (
     <>
@@ -513,9 +535,7 @@ const Resources = () => {
       {/* Resources Content */}
       <section className="py-20 px-4 md:px-8 bg-neutral-50">
         <div className="container mx-auto">
-          <Tabs defaultValue={window.location.search.includes('tab=') 
-            ? window.location.search.split('tab=')[1].split('&')[0] 
-            : "buyer"} className="w-full">
+          <Tabs defaultValue={activeTab} value={activeTab} onValueChange={setActiveTab} className="w-full">
             <TabsList className="grid grid-cols-2 md:grid-cols-7 mb-12 w-full">
               <TabsTrigger value="buyer" className="text-center py-3 font-secondary font-medium">Buyer's Guide</TabsTrigger>
               <TabsTrigger value="seller" className="text-center py-3 font-secondary font-medium">Seller's Guide</TabsTrigger>
