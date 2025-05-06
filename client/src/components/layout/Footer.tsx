@@ -1,5 +1,6 @@
 import { Link } from 'wouter';
 import { NAV_LINKS, SITE_INFO } from '@/lib/constants';
+import TrademarkDisclaimer from './TrademarkDisclaimer';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -126,6 +127,8 @@ const Footer = () => {
             <Link href="/sitemap" className="hover:text-neutral-300 transition-standard">Sitemap</Link>
           </div>
         </div>
+        
+        <TrademarkDisclaimer />
       </div>
     </footer>
   );

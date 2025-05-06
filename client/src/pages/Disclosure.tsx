@@ -187,6 +187,23 @@ const Disclosure = () => {
               Nevada Properties are marked with the MLS™ logo and detailed information about them includes 
               the name of the listing brokers.
             </p>
+
+            <div className="bg-neutral-50 p-4 rounded-lg mt-4">
+              <h3 className="font-display font-semibold text-lg text-[#00008B] mb-2">Trademark Disclaimer</h3>
+              <p className="text-sm text-neutral-600">
+                This website (theridgessummerlinhomes.com) is owned and operated by Dr. Jan Duffy, an independent 
+                real estate professional with Berkshire Hathaway HomeServices Nevada Properties.
+              </p>
+              <p className="text-sm text-neutral-600 mt-2">
+                "Summerlin" is a registered trademark of The Howard Hughes Company, LLC. The use of "Summerlin" 
+                on this website is solely descriptive of the geographical location of the properties marketed and 
+                does not imply any affiliation, endorsement, or sponsorship by The Howard Hughes Company, LLC.
+              </p>
+              <p className="text-sm text-neutral-600 mt-2">
+                Dr. Jan Duffy and Berkshire Hathaway HomeServices Nevada Properties are not affiliated with, 
+                endorsed by, or sponsored by The Howard Hughes Company, LLC or any of its affiliates.
+              </p>
+            </div>
             
             <div className="flex flex-wrap gap-4 text-sm text-neutral-500 pt-4">
               <Link href="/privacy-policy" className="text-[#00008B] hover:underline">Privacy Policy</Link>
