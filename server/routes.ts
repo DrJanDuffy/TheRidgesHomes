@@ -26,8 +26,20 @@ export async function registerRoutes(app: Express): Promise<Server> {
         
         // If not found or empty results, create new contact
         if (!existingContact || existingContact.people.length === 0) {
-          // Map to the Follow Up Boss service API
-          followUpBossResponse = await followUpBossService.createContact(validatedData);
+          // Transform the data to have the expected format for Follow Up Boss
+          // This handles the different field names in client and server schemas
+          const contactData = {
+            firstName: validatedData.firstName,
+            lastName: validatedData.lastName,
+            email: validatedData.email,
+            phone: validatedData.phone,
+            interest: validatedData.interest || null,
+            message: validatedData.message || null,
+            consent: validatedData.consent || false,
+            consentGiven: validatedData.consent || false // Add this for compatibility with client type
+          };
+          
+          followUpBossResponse = await followUpBossService.createContact(contactData);
           console.log('Contact created in Follow Up Boss:', followUpBossResponse);
         } else {
           console.log('Contact already exists in Follow Up Boss');

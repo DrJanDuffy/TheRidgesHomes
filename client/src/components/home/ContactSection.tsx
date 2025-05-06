@@ -45,12 +45,19 @@ const ContactSection = () => {
     setIsSubmitting(true);
     
     try {
+      // Map consent field to match server-side expectation
+      const mappedData = {
+        ...data,
+        // If server expects 'consentGiven' but form uses 'consent'
+        consentGiven: data.consent
+      };
+      
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify(mappedData)
       });
       
       if (response.ok) {

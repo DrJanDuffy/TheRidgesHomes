@@ -7,8 +7,8 @@ interface GenericContactData {
   lastName: string;
   email: string;
   phone: string;
-  interest?: string;
-  message?: string;
+  interest?: string | null;
+  message?: string | null;
   consent?: boolean;
   consentGiven?: boolean;
 }
@@ -38,6 +38,17 @@ export async function createContact(formData: GenericContactData) {
       throw new Error('Follow Up Boss API Key is not set');
     }
     
+    console.log('Creating contact in Follow Up Boss with data:', 
+      JSON.stringify({
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        phone: formData.phone,
+        interest: formData.interest,
+        hasMessage: !!formData.message
+      })
+    );
+    
     // Transform the form data into the format expected by Follow Up Boss
     const personData: FollowUpBossPersonData = {
       firstName: formData.firstName,
@@ -45,8 +56,8 @@ export async function createContact(formData: GenericContactData) {
       emails: [{ value: formData.email, type: 'primary' }],
       phones: [{ value: formData.phone, type: 'mobile' }],
       source: 'Website Contact Form',
-      tags: [formData.interest as string], // Use interest as a tag for segmentation
-      notes: formData.message || `Interest: ${formData.interest}`
+      tags: formData.interest ? [formData.interest] : ['Website Inquiry'], // Use interest as a tag for segmentation
+      notes: formData.message || (formData.interest ? `Interest: ${formData.interest}` : 'Website inquiry')
     };
 
     // Create a basic auth header with the API key
@@ -55,11 +66,21 @@ export async function createContact(formData: GenericContactData) {
       password: ''
     };
 
+    console.log('Sending data to Follow Up Boss API...');
+    
     // Send the data to Follow Up Boss API
     const response = await axios.post(
       `${FOLLOW_UP_BOSS_API_URL}/people`,
       personData,
       { auth }
+    );
+
+    console.log('Successfully created contact in Follow Up Boss:', 
+      JSON.stringify({
+        id: response.data.id,
+        status: response.status,
+        statusText: response.statusText
+      })
     );
 
     return response.data;
@@ -80,14 +101,24 @@ export async function checkExistingContact(email: string) {
       throw new Error('Follow Up Boss API Key is not set');
     }
 
+    console.log(`Checking if contact exists in Follow Up Boss with email: ${email}`);
+
     const auth = {
       username: API_KEY,
       password: ''
     };
 
-    const response = await axios.get(
-      `${FOLLOW_UP_BOSS_API_URL}/people/search?email=${encodeURIComponent(email)}`,
-      { auth }
+    const searchUrl = `${FOLLOW_UP_BOSS_API_URL}/people/search?email=${encodeURIComponent(email)}`;
+    console.log(`Making request to: ${searchUrl}`);
+    
+    const response = await axios.get(searchUrl, { auth });
+    
+    console.log('Follow Up Boss contact search response:', 
+      JSON.stringify({
+        status: response.status,
+        statusText: response.statusText,
+        count: response.data?.people?.length || 0
+      })
     );
 
     return response.data;
