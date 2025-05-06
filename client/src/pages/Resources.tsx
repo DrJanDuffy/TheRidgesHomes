@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { HOMEBOT_ACCOUNT_ID } from '@/lib/constants';
+import BlogSection from '@/components/home/BlogSection';
 
 // Component for buyer/seller resource downloads
 const ResourceDownload = ({ title, description, icon, buttonText }: { title: string, description: string, icon: string, buttonText: string }) => (
@@ -732,7 +733,7 @@ const Resources = () => {
                   </p>
                 </div>
                 
-                <BlogPreview />
+                <BlogSection />
               </div>
             </TabsContent>
           </Tabs>
